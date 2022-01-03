@@ -1,0 +1,5 @@
+﻿  Functions.cpp
+C:\Users\vjera\OneDrive\Radna površina\MyGames\One_and_Zeros_Game\Functions.cpp(5,12): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Source.cpp
+  Generating Code...
+  One_and_Zeros_Game.vcxproj -> C:\Users\vjera\OneDrive\Radna površina\MyGames\One_and_Zeros_Game\Debug\One_and_Zeros_Game.exe
