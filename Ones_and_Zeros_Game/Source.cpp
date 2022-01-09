@@ -13,13 +13,13 @@ int main()
 	while (flag == 0)
 	{
 		int** matrix = NULL;
-		matrix = (int**)malloc(MAX_SIZE * sizeof(int*));
+		matrix = (int**)malloc(MATRIX_SIZE * sizeof(int*));
 		char c = ' ';
 		int br = 0;
 
-		for (int i = 0; i < MAX_SIZE; i++)
+		for (int i = 0; i < MATRIX_SIZE; i++)
 		{
-			*(matrix + i) = (int*)malloc(MAX_SIZE * sizeof(int));
+			*(matrix + i) = (int*)malloc(MATRIX_SIZE * sizeof(int));
 		}
 
 		RandomMatrix(matrix);

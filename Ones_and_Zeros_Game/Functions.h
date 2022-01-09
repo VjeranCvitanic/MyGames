@@ -1,12 +1,11 @@
 #ifndef FUNCTIONS_H
 #define FUNCTIONS_H
-#define MATRIX_SIZE 15                  //Velièina matrice
+#define MATRIX_SIZE 60          //Velièina matrice (MAX = 105, zbog ispisa)
 
 #include <iostream>
 #include <random>
 #include <time.h>
 #include <stdlib.h>
-#define MAX_SIZE 50
 
 using namespace std;
 
@@ -23,9 +22,11 @@ int RandomMatrix(int** m);             //Generira random matricu nula i jedinica
 
 int PrintMatrix(int** m);				//Ispisuje matricu
 
-
 int PrintLine();						//Ispisuje "------------------------------------------------------" x2
 
+//int CopyMatrix(int** q, int** m);	
+												//Dodatne funkcije za provjeru
+//bool CheckIfEqual(int** q, int** m);
 
 //Prvi naèin
 int** FindOnes(int** m);               //Pronalazi jedinice koje nisu na rubu i za svaku zove funkciju Remove

@@ -36,6 +36,23 @@ int PrintLine()
 	return EXIT_SUCCESS;
 }
 
+int CopyMatrix(int** q, int** m)
+{
+	for (int i = 0; i < MATRIX_SIZE; i++)
+		for (int j = 0; j < MATRIX_SIZE; j++)
+			*(*(q + i) + j) = *(*(m + i) + j);
+
+	return EXIT_SUCCESS;
+}
+
+bool CheckIfEqual(int** q, int** m)
+{
+	for (int i = 0; i < MATRIX_SIZE; i++)
+		for (int j = 0; j < MATRIX_SIZE; j++)
+			if (*(*(q + i) + j) != *(*(m + i) + j))
+				return false;
+	return true;
+}
 
 //Prvi naèin
 int** FindOnes(int** m)
@@ -145,7 +162,7 @@ bool CheckList(int i, int j, Position current)
 
 Position CreateNewCouple(int i, int j)
 {
-	Position q = (Position)malloc(MAX_SIZE * sizeof(List));
+	Position q = (Position)malloc(sizeof(List));
 
 	if (!q)
 		return NULL;
