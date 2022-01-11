@@ -4,6 +4,7 @@
 using namespace std;
 
 										//Objašnjenja funkcija su u header file-u
+		//Optimizirat prvi nacin s novom listom, dodat prikaz vremena potrebnog za izracun, popravit main
 
 int main()
 {
@@ -41,9 +42,11 @@ int main()
 			if (c == '1')
 			{
 				br = 1;
-				matrix = FindOnes(matrix);			//Prvi naèin -> Pronalazi jedinice koje nisu povezane s rubovima i briše ih
+				auto startTime = std::chrono::high_resolution_clock::now();
+				matrix = FindOnes(matrix);					//Prvi naèin -> Pronalazi jedinice koje nisu povezane s rubovima i briše ih
+				auto endTime = std::chrono::high_resolution_clock::now();
 				PrintLine();
-				cout << endl << "First method: " << endl;
+				cout << endl << "First method (in " << std::chrono::duration_cast<std::chrono::milliseconds>(endTime - startTime).count() << "ms) :" << endl;
 				PrintMatrix(matrix);
 				PrintLine();
 			}
@@ -51,10 +54,12 @@ int main()
 			else if (c == '2')
 			{
 				br = 1;
+				auto startTime = std::chrono::high_resolution_clock::now();
 				matrix = FindOnes2(matrix);				//Drugi naèin -> Sve jedinice povezane s rubovima mijenja u dvice, ostale jedinice mijenja u nule, zatim dvice vraæa u jedinice
 				End(matrix);
+				auto endTime = std::chrono::high_resolution_clock::now();
 				PrintLine();
-				cout << endl << "Second method: " << endl;
+				cout << endl << "Second method (in " << std::chrono::duration_cast<std::chrono::milliseconds>(endTime - startTime).count() << "ms) :" << endl;
 				PrintMatrix(matrix);
 				PrintLine();
 			}

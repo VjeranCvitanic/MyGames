@@ -65,6 +65,14 @@ int** FindOnes(int** m)
 	head.next = NULL;
 
 	Position first = &head;
+
+
+	/*List mainHead = {0};
+	mainHead.couple[0] = -1;
+	mainHead.couple[1] = -1;
+	mainHead.next = NULL;
+
+	Position mainFirst = &mainHead;*/
 	
 
 	for(int i = 1; i < MATRIX_SIZE - 1; i++)
@@ -74,6 +82,7 @@ int** FindOnes(int** m)
 			{
 				Position q = CreateNewCouple(i, j);
 				InsertNewCouple(first, q);
+				//InsertNewCouple(mainFirst, q);
 				temp = Remove(m, i, j, first->next);
 				if (temp == 0)(*(*(m + i) + j) = 0);
 

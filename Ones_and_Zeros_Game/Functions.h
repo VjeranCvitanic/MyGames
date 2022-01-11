@@ -1,10 +1,11 @@
 #ifndef FUNCTIONS_H
 #define FUNCTIONS_H
-#define MATRIX_SIZE 60          //Velièina matrice (MAX = 105, zbog ispisa)
+#define MATRIX_SIZE 60      //Velièina matrice (MAX = 105, zbog ispisa)
 
 #include <iostream>
 #include <random>
 #include <time.h>
+#include <chrono>
 #include <stdlib.h>
 
 using namespace std;
