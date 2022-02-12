@@ -37,13 +37,10 @@ void game::Live()
 		{
 			int temp = Neighbour(i, j);
 
-			if (copyWorld[i][j] == deadSign)
+
+			if (copyWorld[i][j] == deadSign && temp == 3)
 			{
-				/*if (temp == 3)
-				{
-					copyWorld[i][j] == liveSign;
-				}*/
-				copyWorld[i][j] = liveSign;
+				world[i][j] = liveSign;
 			}
 
 			else
