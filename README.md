@@ -1,3 +1,3 @@
 # MyGames
 My games,
-Repository created for storing little projects I make
+Repository created for saving small and fun projects I make
