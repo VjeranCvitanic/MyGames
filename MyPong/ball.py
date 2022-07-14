@@ -14,12 +14,12 @@ class Ball():
         self.previous_positions = []
 
         if choice([-1,1]) == 1:
-            self.velocity = pygame.math.Vector2(self.speed, 3.1 * choice((-1, 0, 1)))
-            self.position = pygame.math.Vector2(int(game_screen_width / 2) - 400, int(game_screen_height / 2))
+            self.velocity = pygame.math.Vector2(self.speed, 2.8 * choice((-1, 0, 1)))
+            self.position = pygame.math.Vector2(int(game_screen_width / 2) - 450, int(game_screen_height / 2))
 
         else:
-            self.velocity = pygame.math.Vector2(-1 * self.speed, 3.1 * choice((-1, 0, 1)))
-            self.position = pygame.math.Vector2(int(game_screen_width / 2) + 400, int(game_screen_height / 2))
+            self.velocity = pygame.math.Vector2(-1 * self.speed, 2.8 * choice((-1, 0, 1)))
+            self.position = pygame.math.Vector2(int(game_screen_width / 2) + 450, int(game_screen_height / 2))
 
     def draw(self, screen):
         pygame.draw.circle(screen, self.color, self.position, self.radius, 0)
