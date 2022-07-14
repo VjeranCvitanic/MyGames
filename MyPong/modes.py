@@ -47,7 +47,7 @@ def mode(game_mode, background_color):
                 run = False
 
         pygame.draw.rect(screen, background_color, pygame.Rect(game_screen_width / 2 - 20, game_screen_height / 2 - 100 - 10, 50, 50))
-        screen.blit(font.render(text, True, (0, 0, 0)), (game_screen_width / 2 - 10, game_screen_height / 2 - 100))
+        screen.blit(font.render(text, True, 'green'), (game_screen_width / 2 - 10, game_screen_height / 2 - 100))
         pygame.display.flip()
 
     while True:
@@ -73,7 +73,7 @@ def mode(game_mode, background_color):
         ball.draw(screen)
 
         for powerUp in powerUps_list:
-            powerUp.draw(screen)
+            powerUp.draw(screen, background_color)
 
         print_score(screen, p1, p2)
 

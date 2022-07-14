@@ -22,7 +22,7 @@ class PowerUps:
         self.image = pygame.transform.scale(self.image, (self.size, self.size))
 
 
-    def draw(self, screen):
+    def draw(self, screen, background_color):
         if self.alive:
             pygame.draw.rect(screen, background_color, pygame.Rect(self.position.x, self.position.y, self.size, self.size), 0)
             screen.blit(self.image, (self.position.x, self.position.y, self.size, self.size))

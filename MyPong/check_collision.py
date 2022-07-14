@@ -50,24 +50,24 @@ def check_collision(ball, player1, player2, game_mode, powerUps_list):
 
     #checks floor and ceiling
     elif ball.position.y + ball.radius >= game_screen_height:
-        ball.position.y = game_screen_height - ball.radius - 0.01
+        ball.position.y = game_screen_height - ball.radius - 1
         ball.velocity.y *= -1
         if game_mode == 'random':
             ball.speed = randint(9, 17)
-            ball.velocity.y = float(choice([-1, -1, -1, -1, -1, 1])) * (ball.speed - 4)
+            ball.velocity.y = -1 * ball.speed - 4
             if choice([-1, -1, -1, -1, -1, -1, -1, -1, 1]) == 1:
-                ball.position.y = ball.radius + 0.01
-                ball.velocity.y = -1
+                ball.position.y = 2 * ball.radius + 1
+                ball.velocity.y = 1
 
     elif ball.position.y - ball.radius <= 0:
-        ball.position.y = ball.radius + 0.01
+        ball.position.y = ball.radius + 1
         ball.velocity.y *= -1
         if game_mode == 'random':
             ball.speed = randint(9, 17)
-            ball.velocity.y *= float(choice([-1, -1, -1, -1, -1, 1])) * (ball.speed - 4)
+            ball.velocity.y = ball.speed - 4
             if choice([-1, -1, -1, -1, -1, -1, -1, -1, 1]) == 1:
-                ball.position.y = game_screen_height - ball.radius - 0.01
-                ball.velocity.y = 1
+                ball.position.y = game_screen_height - 2 * ball.radius - 1
+                ball.velocity.y = -1
 
 
     #goal
@@ -144,9 +144,9 @@ def check_collision(ball, player1, player2, game_mode, powerUps_list):
 
             elif each_powerUp.type == 'freezeopponent1s':
                 if ball.lastPlayerToPlay == 1:
-                    player2.cooldown = 2 * fps
+                    player2.cooldown = 1.5 * fps
                 elif ball.lastPlayerToPlay == 2:
-                    player1.cooldown = 2 * fps
+                    player1.cooldown = 1.5 * fps
 
             powerUps_list.remove(each_powerUp)
             each_powerUp.alive = False
