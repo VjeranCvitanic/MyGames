@@ -2,7 +2,6 @@ from settings import *
 from modes import mode
 import sys
 
-#ball anim
 #check collision
 
 

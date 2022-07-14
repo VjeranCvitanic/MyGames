@@ -50,22 +50,24 @@ def check_collision(ball, player1, player2, game_mode, powerUps_list):
 
     #checks floor and ceiling
     elif ball.position.y + ball.radius >= game_screen_height:
-        ball.position.y = game_screen_height - ball.radius
+        ball.position.y = game_screen_height - ball.radius - 0.01
         ball.velocity.y *= -1
         if game_mode == 'random':
             ball.speed = randint(9, 17)
             ball.velocity.y = float(choice([-1, -1, -1, -1, -1, 1])) * (ball.speed - 4)
             if choice([-1, -1, -1, -1, -1, -1, -1, -1, 1]) == 1:
-                ball.position.y = ball.radius
+                ball.position.y = ball.radius + 0.01
+                ball.velocity.y = -1
 
     elif ball.position.y - ball.radius <= 0:
-        ball.position.y = ball.radius
+        ball.position.y = ball.radius + 0.01
         ball.velocity.y *= -1
         if game_mode == 'random':
             ball.speed = randint(9, 17)
             ball.velocity.y *= float(choice([-1, -1, -1, -1, -1, 1])) * (ball.speed - 4)
             if choice([-1, -1, -1, -1, -1, -1, -1, -1, 1]) == 1:
-                ball.position.y = game_screen_height - ball.radius
+                ball.position.y = game_screen_height - ball.radius - 0.01
+                ball.velocity.y = 1
 
 
     #goal

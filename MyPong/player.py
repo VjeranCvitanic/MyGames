@@ -39,7 +39,7 @@ class Player1(Player):
             else:
                 self.orientation = 0
 
-        if self.height_change_timer <= 0:
+        if self.height_change_timer > 0:
             self.height_change_timer -= 1
 
         elif self.height_change_timer == 1:
