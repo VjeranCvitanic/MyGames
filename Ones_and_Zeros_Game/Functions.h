@@ -1,6 +1,6 @@
 #ifndef FUNCTIONS_H
 #define FUNCTIONS_H
-#define MATRIX_SIZE 60      //Velièina matrice (MAX = 105, zbog ispisa)
+#define MATRIX_SIZE 100  //Velièina matrice (MAX = 105, zbog ispisa)
 
 #include <iostream>
 #include <random>
