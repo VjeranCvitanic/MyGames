@@ -1,11 +1,13 @@
-from player import Player1, Player2
+from player import Player1, Player2, DoubleModePlayer2, DoubleModePlayer1
 from ball import Ball
 from check_collision import check_collision
 from settings import *
 from print_score import print_score
 from win import check_if_win
+from bot import Bot
+from countdown import countdown
 
-def mode(game_mode, background_color):
+def mode(game_mode, background_color, against_bot):
     pygame.init()
 
     screen = pygame.display.set_mode((game_screen_width, game_screen_height))
@@ -15,15 +17,25 @@ def mode(game_mode, background_color):
         pygame.display.set_caption('Survival Mode')
     elif game_mode == 'random':
         pygame.display.set_caption('Random Mode')
+    elif game_mode == 'double':
+        pygame.display.set_caption('Double Mode')
 
     powerUps_list = []
 
     p1 = Player1()
 
-    p2 = Player2()
+    if not against_bot:
+        p2 = Player2()
+    else:
+        p2 = Bot()
 
     ball = Ball()
 
+    goal = False
+
+    if game_mode == 'double':
+        p1_2 = DoubleModePlayer1()
+        p2_2 = DoubleModePlayer2()
 
 
 
@@ -31,51 +43,62 @@ def mode(game_mode, background_color):
     p1.draw(screen)
     p2.draw(screen)
 
-    counter, text = 3, '3'.rjust(3)
-    pygame.time.set_timer(pygame.USEREVENT, 1000)
+    if game_mode == 'double':
+        p1_2.draw(screen)
+        p2_2.draw(screen)
 
-    run = True
-    while run:
-        for e in pygame.event.get():
-            if e.type == pygame.USEREVENT:
-                counter -= 1
-                if counter > 0:
-                    text = str(counter).rjust(3)
-                else:
-                    run = False
-            if e.type == pygame.QUIT:
-                run = False
 
-        pygame.draw.rect(screen, background_color, pygame.Rect(game_screen_width / 2 - 20, game_screen_height / 2 - 100 - 10, 50, 50))
-        screen.blit(font.render(text, True, 'green'), (game_screen_width / 2 - 10, game_screen_height / 2 - 100))
-        pygame.display.flip()
+    countdown(screen, background_color)
+
 
     while True:
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 return
 
-        if check_if_win(p1, p2):
-            return
 
 
+        if game_mode == 'double':
+            if check_collision(ball, p1, p2, game_mode, powerUps_list, p1_2, p2_2) == 'goal':
+                goal = True
 
-        check_collision(ball, p1, p2, game_mode, powerUps_list)
+        else:
+            if check_collision(ball, p1, p2, game_mode, powerUps_list) == 'goal':
+                goal = True
+
+        ball.update()
 
         p1.update()
-        p2.update()
-        ball.update()
+        if not against_bot:
+            p2.update()
+        else:
+            p2.update(ball)
+
+        if game_mode == 'double':
+            p1_2.update()
+            p2_2.update()
+
 
         screen.fill(background_color)
 
         p1.draw(screen)
         p2.draw(screen)
+        if game_mode == 'double':
+            p1_2.draw(screen)
+            p2_2.draw(screen)
         ball.draw(screen)
+        print_score(screen, p1, p2)
+
+        if check_if_win(p1, p2):
+            return
+
+        if goal:
+            countdown(screen, background_color)
+            goal = False
 
         for powerUp in powerUps_list:
             powerUp.draw(screen, background_color)
 
-        print_score(screen, p1, p2)
 
         pygame.display.flip()
         fpsClock.tick(fps)

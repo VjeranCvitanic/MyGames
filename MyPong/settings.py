@@ -22,6 +22,7 @@ light_mode_image = pygame.transform.scale(light_mode_image, (90, 80))
 dark_mode_image = pygame.transform.scale(dark_mode_image, (90, 80))
 
 
+
 button_color = 'light blue'
 dark_button_color = 'dark blue'
 
