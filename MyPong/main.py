@@ -77,7 +77,7 @@ def main_menu():
         text_random_mode = font.render('Random Mode', True, 'blue', button_color)
         screen.blit(text_random_mode, (int(screen_width / 2) - 70, int(screen_height / 2) + 60))
 
-        text_double_mode = font.render('Double Mode', True, 'blue', button_color)
+        text_double_mode = font.render('Double Mode  ', True, 'blue', button_color)
         screen.blit(text_double_mode, (int(screen_width / 2) - 70, int(screen_height / 2) + 100))
 
         if not against_bot:

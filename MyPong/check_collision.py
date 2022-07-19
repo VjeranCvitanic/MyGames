@@ -10,7 +10,8 @@ def check_collision(ball, player1, player2, game_mode, powerUps_list, p1_2 = 0, 
     if game_mode != 'double':
         #collision with paddles
         if ball.position.x + ball.radius >= player2.position.x and player2.position.y + player2.height >= ball.position.y - ball.radius and ball.position.y + ball.radius >= player2.position.y:
-            ball.velocity.x *= -1
+            if ball.velocity.x > 0:
+                ball.velocity.x *= -1
             ball.lastPlayerToPlay = 2
             ball.velocity.y -= player2.orientation * player2.velocity * 0.5
             if game_mode == 'normal' and randint(1,3) == 1:
@@ -25,7 +26,8 @@ def check_collision(ball, player1, player2, game_mode, powerUps_list, p1_2 = 0, 
                 ball.velocity.x = sign(ball.velocity.x) * ball.speed
 
         elif ball.position.x - ball.radius <= player1.position.x + player1.width and player1.position.y + player1.height >= ball.position.y - ball.radius and ball.position.y + ball.radius >= player1.position.y:
-            ball.velocity.x *= -1
+            if ball.velocity.x < 0:
+                ball.velocity.x *= -1
             ball.lastPlayerToPlay = 1
             ball.velocity.y -= player1.orientation * player1.velocity * 0.5
             if game_mode == 'normal' and randint(1,3) == 1:
@@ -45,7 +47,7 @@ def check_collision(ball, player1, player2, game_mode, powerUps_list, p1_2 = 0, 
             if ball.position.y - ball.radius <= player1.position.y + player1.height and ball.position.y + ball.radius >= player1.position.y:
                 ball.velocity.y *= -1
 
-        elif ball.position.x - ball.radius >= player2.position.x + player2.width and ball.position.x + ball.radius <= player2.position.x:
+        elif ball.position.x + ball.radius >= player2.position.x + player2.width and ball.position.x - ball.radius <= player2.position.x:
             if ball.position.y - ball.radius <= player2.position.y + player2.height and ball.position.y + ball.radius >= player2.position.y:
                 ball.velocity.y *= -1
 
