@@ -15,9 +15,9 @@ def main():
                 pygame.quit()
                 sys.exit()
             if event.type == pygame.MOUSEBUTTONUP:
-                if 20 <= mouse_position[0] <= 62 and 50 <= mouse_position[1] <= 70:
+                if 20 <= mouse_position[0] <= 78 and 50 <= mouse_position[1] <= 70:
                     level1()
-                if 20 <= mouse_position[0] < 62 and 80 <= mouse_position[1] <= 100:
+                if 20 <= mouse_position[0] <= 78 and 80 <= mouse_position[1] <= 100:
                     level2()
 
         screen.fill(background_color)

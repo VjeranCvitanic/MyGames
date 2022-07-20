@@ -125,11 +125,11 @@ def level2():
 
         ball.draw(screen)
 
-        prev = copy(ball.position)
-        for pos in ball.prevPositions:
-            pygame.draw.circle(screen, (0,0,0), pos, 1, 0)
-            pygame.draw.line(screen, (255, 255, 255), prev, pos, 2)
-            prev = copy(pos)
+       # prev = copy(ball.position)
+        #for pos in ball.prevPositions:
+         #   pygame.draw.circle(screen, (0,0,0), pos, 1, 0)
+          #  pygame.draw.line(screen, (255, 255, 255), prev, pos, 2)
+           # prev = copy(pos)
 
         if startPos != -1:
             pygame.draw.line(screen, 'orange', ball.position, mouse_position, 4)
