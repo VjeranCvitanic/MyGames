@@ -23,8 +23,8 @@ def main():
     key_get_pressed_timer = 1
     fall_timer = 400 #330
     speed_up_the_game_timer = 1
-    speed_up_the_game_mod = 25000
-    speed_up_factor = 0.9
+    speed_up_the_game_mod = 18000
+    speed_up_factor = 0.96
 
     with open('highscore.txt') as f:
         highscore = f.readlines()
@@ -48,7 +48,7 @@ def main():
                 new_tetronimo.fallDownFast(new_grid)
 
 
-        if key_get_pressed_timer % 100 == 0:
+        if key_get_pressed_timer % 80 == 0:
             screen.fill('black')
             new_grid.draw(screen)
             key = pygame.key.get_pressed()
