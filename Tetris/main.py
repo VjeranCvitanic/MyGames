@@ -24,7 +24,7 @@ def main():
     fall_timer = 400 #330
     speed_up_the_game_timer = 1
     speed_up_the_game_mod = 18000
-    speed_up_factor = 0.96
+    speed_up_factor = 0.97
 
     with open('highscore.txt') as f:
         highscore = f.readlines()
@@ -46,24 +46,21 @@ def main():
                 new_tetronimo.rotate(new_grid)
             elif event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE:
                 new_tetronimo.fallDownFast(new_grid)
+            elif event.type == pygame.KEYDOWN and event.key == pygame.K_h:
+                return_value = new_tetronimo.hold(new_grid)
+                if return_value != 0:
+                    new_tetronimo = return_value
+                    new_tetronimo.positions_list = deepcopy(new_tetronimo.startPositions_list)
+                    new_grid.tetronimoes_list.append(new_tetronimo)
 
 
         if key_get_pressed_timer % 80 == 0:
             screen.fill('black')
             new_grid.draw(screen)
             key = pygame.key.get_pressed()
-            return_value = new_tetronimo.update(key, new_grid)
-            if return_value != 0:
-                new_tetronimo = return_value
-                new_tetronimo.positions_list = deepcopy(new_tetronimo.startPositions_list)
-                new_grid.tetronimoes_list.append(new_tetronimo)
-                """if return_value == -1:
-                    new_tetronimo = randomTetronimo()
-                    new_grid.tetronimoes_list.append(new_tetronimo)
-                else:
-                    new_tetronimo = return_value
-                    new_tetronimo.positions_list = deepcopy(new_tetronimo.startPositions_list)
-                    new_grid.tetronimoes_list.append(new_tetronimo)"""
+            new_tetronimo.update(key, new_grid)
+
+
 
         if key_get_pressed_timer % fall_timer == 0:
             if speed_up_the_game_timer % speed_up_the_game_mod == 0:
