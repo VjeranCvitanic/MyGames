@@ -9,7 +9,7 @@ class Tetronimo:
         self.falling = True
         self.sliding = True
         self.color = 'light yellow'
-        self.wasHolded = False
+        self.wasHeld = False
 
     def draw(self, screen):
         for pos in self.positions_list:
@@ -98,13 +98,23 @@ class Tetronimo:
                 self.rotate(grid)
                 return 0"""
 
-            if key[pygame.K_h] and not self.wasHolded:
-                self.wasHolded = True
+            """if key[pygame.K_h] and not self.wasHeld:
+                self.wasHeld = True
                 old_tetronimo = grid.hold_tetronimo
                 grid.hold_tetronimo = self
                 grid.tetronimoes_list.remove(self)
-                return old_tetronimo
+                return old_tetronimo"""
 
+
+        return 0
+
+    def hold(self, grid):
+        if not self.wasHeld:
+            self.wasHeld = True
+            old_tetronimo = grid.hold_tetronimo
+            grid.hold_tetronimo = self
+            grid.tetronimoes_list.remove(self)
+            return old_tetronimo
 
         return 0
 
@@ -768,4 +778,3 @@ class STetronimo(Tetronimo):
                 self.positions_list[1] = new_pos[1]
                 self.positions_list[3] = new_pos[2]
                 self.state = 0
-
