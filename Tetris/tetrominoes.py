@@ -544,8 +544,8 @@ class TTetronimo(Tetronimo):
                         flag = True
 
                 if not flag:
-                    if grid.check_if_move_is_valid(axis[0], axis[1] + 2):
-                        self.positions_list[2] = (axis[0], axis[1] + 2)
+                    if grid.check_if_move_is_valid(axis[0], axis[1] + 1):
+                        self.positions_list[2] = (axis[0], axis[1] + 1)
                     else:
                         flag = True
 
