@@ -1,6 +1,7 @@
 from settings import *
 from copy import deepcopy
 from randomTetronimo import randomTetronimo
+from random import choice
 
 class Grid:
     def __init__(self):
@@ -15,26 +16,33 @@ class Grid:
         self.nextTetronimo = 0
         self.score = 0
         self.highscore = 0
+        self.level = 1
+        self.lvl_color = choice(['purple', 'blue', 'light blue', 'yellow', 'orange', 'red', 'pink', 'light green'])
 
 
     def draw(self, screen):
+        pygame.draw.rect(screen, 'goldenrod', pygame.Rect(x_offset - 10, y_offset - 10, 440, 720), 10)
         for i in range(0, self.width, self.square_size):
             for j in range(0, self.height, self.square_size):
                 pygame.draw.rect(screen, 'light yellow', pygame.Rect(i + x_offset, j + y_offset, self.square_size, self.square_size), 1)
+                pygame.draw.rect(screen, 'gray', pygame.Rect( i + x_offset + 1, j + y_offset + 1, self.square_size - 1, self.square_size - 1))
 
         for tet in self.tetronimoes_list:
             tet.draw(screen)
 
         score_text = font.render('score:' + str(self.score), True, 'orange', 'black')
-        screen.blit(score_text, (width - 20, 50))
+        screen.blit(score_text, (width - 12, 50))
 
         highscore_text = font.render('Highscore:', True, 'orange', 'black')
-        screen.blit(highscore_text, (width - 20, height - 80))
+        screen.blit(highscore_text, (width - 12, height - 80))
 
         highscore_text_2 = font.render(str(self.highscore), True, 'orange', 'black')
-        screen.blit(highscore_text_2, (width - 20, height - 50))
+        screen.blit(highscore_text_2, (width - 12, height - 50))
 
-        pygame.draw.rect(screen, self.nextTetronimo.color, pygame.Rect(width - 20, 100, 20, 20), 0)
+        lvl_text = font.render('Level: ' + str(self.level), True, self.lvl_color, 'black')
+        screen.blit(lvl_text, (width - 12, height - 200))
+
+        pygame.draw.rect(screen, self.nextTetronimo.color, pygame.Rect(width - 12, 100, 20, 20), 0)
 
     def check_if_move_is_valid(self, x, y) -> bool:
         if y > 11 or y < 0 or x - 1 >= floor_y or self.matrix[x][y] != 0:
