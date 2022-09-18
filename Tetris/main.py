@@ -26,7 +26,11 @@ def main():
     speed_up_the_game_timer = 1
     speed_up_the_game_mod = 55000
     speed_up_factor = 5
-    sensitivity = 115
+    sensitivity = 70
+
+    pygame.display.set_caption('Tetris')
+    icon_img = pygame.image.load('tetris_icon.jpg').convert_alpha()
+    pygame.display.set_icon(icon_img)
 
     with open('highscore.txt') as f:
         highscore = f.readlines()
@@ -83,7 +87,12 @@ def main():
                 elif fall_timer < 100:
                     speed_up_factor = 0
                 speed_up_the_game_timer = 1
-                sensitivity += 5
+                if sensitivity < 62:
+                    sensitivity -= 2
+                elif sensitivity < 58:
+                    pass
+                else:
+                    sensitivity -= 4
                 new_grid.level += 1
                 new_grid.lvl_color = choice(['purple', 'blue', 'light blue', 'yellow', 'orange', 'red', 'pink', 'light green'])
 
@@ -105,6 +114,16 @@ def main():
             new_grid.add_to_matrix(new_tetronimo)
             new_grid.check_if_row_is_full()
             if new_grid.check_if_end():
+                f = True
+                while f:
+                    pygame.draw.rect(screen, 'black', pygame.Rect(width / 2 - 60, height / 2 - 10, 108, 40), 0)
+                    score_txt = font.render('score:' + str(new_grid.score), True, 'orange', 'black')
+                    screen.blit(score_txt, (width / 2 - 55, height / 2 - 2))
+                    for event in pygame.event.get():
+                        if event.type == pygame.KEYUP:
+                            f = False
+                    pygame.display.flip()
+
                 run = False
                 pygame.quit()
                 sys.exit()
