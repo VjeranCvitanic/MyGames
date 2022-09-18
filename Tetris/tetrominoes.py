@@ -143,6 +143,7 @@ class StraightTetronimo(Tetronimo):
                     flag = True
 
             if flag:
+                new_list = []
                 flag = False
                 for i in range(-2, 2):
                     if grid.check_if_move_is_valid(x + 2, y + i + 2):
@@ -151,6 +152,7 @@ class StraightTetronimo(Tetronimo):
                         flag = True
 
             if flag:
+                new_list = []
                 flag = False
                 for i in range(-2, 2):
                     if grid.check_if_move_is_valid(x + 2, y + i - 1):
@@ -178,6 +180,7 @@ class StraightTetronimo(Tetronimo):
                     flag = True
 
             if flag:
+                new_list = []
                 flag = False
                 for i in range(-2, 2):
                     if grid.check_if_move_is_valid(x + i, y + 4):
@@ -186,6 +189,7 @@ class StraightTetronimo(Tetronimo):
                         flag = True
 
             if flag:
+                new_list = []
                 flag = False
                 for i in range(-2, 2):
                     if grid.check_if_move_is_valid(x + i, y - 2):
@@ -735,6 +739,11 @@ class STetronimo(Tetronimo):
                     if not grid.check_if_move_is_valid(pos[0], pos[1]):
                         flag = True
 
+                if not flag:
+                    if grid.check_if_move_is_valid(axis[0], axis[1] + 1):
+                        self.positions_list[2] = (axis[0], axis[1] + 1)
+                    else:
+                        flag = True
 
             if not flag:
                 self.positions_list[0] = new_pos[0]
