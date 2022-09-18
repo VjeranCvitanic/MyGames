@@ -30,8 +30,11 @@ class Grid:
         for tet in self.tetronimoes_list:
             tet.draw(screen)
 
-        score_text = font.render('score:' + str(self.score), True, 'orange', 'black')
+        score_text = font.render('score:', True, 'orange', 'black')
         screen.blit(score_text, (width - 12, 50))
+
+        score_text2 = font.render(str(self.score), True, 'orange', 'black')
+        screen.blit(score_text2, (width - 12, 73))
 
         highscore_text = font.render('Highscore:', True, 'orange', 'black')
         screen.blit(highscore_text, (width - 12, height - 80))
@@ -42,7 +45,10 @@ class Grid:
         lvl_text = font.render('Level: ' + str(self.level), True, self.lvl_color, 'black')
         screen.blit(lvl_text, (width - 12, height - 200))
 
-        pygame.draw.rect(screen, self.nextTetronimo.color, pygame.Rect(width - 12, 100, 20, 20), 0)
+        next_txt = font.render('next:', True, self.nextTetronimo.color, 'black')
+        screen.blit(next_txt, (width - 12, 120))
+
+        pygame.draw.rect(screen, self.nextTetronimo.color, pygame.Rect(width - 12, 140, 20, 20), 0)
 
     def check_if_move_is_valid(self, x, y) -> bool:
         if y > 11 or y < 0 or x - 1 >= floor_y or self.matrix[x][y] != 0:
