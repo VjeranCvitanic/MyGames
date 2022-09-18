@@ -7,9 +7,6 @@ from random import choice
 os.environ["SDL_VIDEODRIVER"] = "dummy"
 
 
-"""
-Some alternative rotations become buggy sometimes
-"""
 
 
 def main():
