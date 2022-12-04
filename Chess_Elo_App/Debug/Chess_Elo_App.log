@@ -1,0 +1,7 @@
+﻿  Functions.c
+C:\Users\vjera\OneDrive\Radna površina\MyGames\Chess_Elo_App\Functions.c(34,98): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\vjera\OneDrive\Radna površina\MyGames\Chess_Elo_App\Functions.c(35,98): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\vjera\OneDrive\Radna površina\MyGames\Chess_Elo_App\Functions.c(21,1): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\vjera\OneDrive\Radna površina\MyGames\Chess_Elo_App\Functions.c(22,1): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\vjera\OneDrive\Radna površina\MyGames\Chess_Elo_App\Functions.c(283,1): warning C4047: 'initializing': 'char' differs in levels of indirection from 'char [2]'
+  Chess_Elo_App.vcxproj -> C:\Users\vjera\OneDrive\Radna površina\MyGames\Chess_Elo_App\Debug\Chess_Elo_App.exe
